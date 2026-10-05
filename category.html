@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo | VOLT®</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-banner">
+        <p>⚡ Frete grátis em compras acima de R$ 299 | Ganhe 10% OFF no PIX</p>
+    </div>
+
+    <header class="header">
+        <div class="header-container">
+            <button class="icon-btn menu-toggle" aria-label="Abrir Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </button>
+            <a href="index.html" class="logo"><span>VOLT</span><span class="logo-dot">.</span></a>
+            <nav class="desktop-nav">
+                <a href="category.html?cat=tenis" class="nav-link">Tênis</a>
+                <a href="category.html?cat=roupas" class="nav-link">Roupas</a>
+                <a href="category.html?cat=acessorios" class="nav-link">Acessórios</a>
+                <a href="category.html?cat=lancamentos" class="nav-link highlight">Lançamentos</a>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn search-toggle" aria-label="Buscar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+                <button class="icon-btn wishlist-toggle" aria-label="Favoritos"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="badge" id="wishlist-count">0</span></button>
+                <button class="icon-btn cart-toggle" aria-label="Carrinho"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="badge" id="cart-count">0</span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer & Modals (Shared) -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <span class="logo">VOLT<span class="logo-dot">.</span></span>
+            <button class="icon-btn close-drawer" aria-label="Fechar Menu">✕</button>
+        </div>
+        <div class="drawer-body">
+            <a href="category.html?cat=tenis" class="drawer-link">Tênis <span>→</span></a>
+            <a href="category.html?cat=roupas" class="drawer-link">Roupas <span>→</span></a>
+            <a href="category.html?cat=acessorios" class="drawer-link">Acessórios <span>→</span></a>
+            <a href="category.html?cat=lancamentos" class="drawer-link">Lançamentos <span>⚡</span></a>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <div class="search-modal" id="searchModal">
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <input type="text" id="searchInput" placeholder="Buscar produtos...">
+                <button class="close-search" id="closeSearch">✕</button>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Seu Carrinho (<span id="cartDrawerCount">0</span>)</h3>
+            <button class="icon-btn close-cart">✕</button>
+        </div>
+        <div class="cart-items" id="cartItemsContainer"></div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal</span>
+                <span id="cartSubtotalPrice">R$ 0,00</span>
+            </div>
+            <button class="btn-primary full" id="checkoutBtn">FINALIZAR COMPRA</button>
+        </div>
+    </div>
+
+    <!-- Category Page Main -->
+    <main class="category-main">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <span id="currentCategoryName">Catálogo</span>
+            </div>
+
+            <div class="category-header-banner">
+                <h1 id="categoryTitle">TODOS OS PRODUTOS</h1>
+                <p id="categoryDesc">Inovação de ponta para elevar seu treino e estilo urbano.</p>
+            </div>
+
+            <div class="catalog-layout">
+                <!-- Sidebar Filters -->
+                <aside class="filter-sidebar">
+                    <div class="filter-group">
+                        <h4>Categorias</h4>
+                        <label><input type="checkbox" class="filter-chk" value="tenis" name="cat"> Tênis</label>
+                        <label><input type="checkbox" class="filter-chk" value="roupas" name="cat"> Roupas</label>
+                        <label><input type="checkbox" class="filter-chk" value="acessorios" name="cat"> Acessórios</label>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Gênero</h4>
+                        <label><input type="checkbox" class="filter-chk" value="homem" name="gen"> Masculino</label>
+                        <label><input type="checkbox" class="filter-chk" value="mulher" name="gen"> Feminino</label>
+                        <label><input type="checkbox" class="filter-chk" value="unissex" name="gen"> Unissex</label>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Preço</h4>
+                        <label><input type="radio" name="price" value="all" checked> Todos</label>
+                        <label><input type="radio" name="price" value="baixo"> Até R$ 400</label>
+                        <label><input type="radio" name="price" value="medio"> R$ 400 - R$ 900</label>
+                        <label><input type="radio" name="price" value="alto"> Acima de R$ 900</label>
+                    </div>
+                </aside>
+
+                <!-- Products Area -->
+                <div class="catalog-content">
+                    <div class="catalog-toolbar">
+                        <span id="productCount">Mostrando 0 produtos</span>
+                        <select id="sortSelect" class="sort-select">
+                            <option value="destaque">Mais Vendidos</option>
+                            <option value="menor-preco">Menor Preço</option>
+                            <option value="maior-preco">Maior Preço</option>
+                        </select>
+                    </div>
+
+                    <div class="product-grid" id="catalogGrid">
+                        <!-- Injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 VOLT Sports Inc. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

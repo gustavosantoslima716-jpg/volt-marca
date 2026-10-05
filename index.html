@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOLT® | Loja Oficial de Esportes e Performance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Banner Notification -->
+    <div class="top-banner">
+        <p>⚡ Frete grátis em compras acima de R$ 299 | Ganhe 10% OFF no PIX</p>
+    </div>
+
+    <!-- Header Sticky -->
+    <header class="header">
+        <div class="header-container">
+            <button class="icon-btn menu-toggle" aria-label="Abrir Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </button>
+            
+            <a href="index.html" class="logo">
+                <span>VOLT</span><span class="logo-dot">.</span>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="category.html?cat=tenis" class="nav-link">Tênis</a>
+                <a href="category.html?cat=roupas" class="nav-link">Roupas</a>
+                <a href="category.html?cat=acessorios" class="nav-link">Acessórios</a>
+                <a href="category.html?cat=lancamentos" class="nav-link highlight">Lançamentos</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-btn search-toggle" aria-label="Buscar">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                </button>
+                <button class="icon-btn wishlist-toggle" aria-label="Favoritos">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    <span class="badge" id="wishlist-count">0</span>
+                </button>
+                <button class="icon-btn cart-toggle" aria-label="Carrinho">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    <span class="badge" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <span class="logo">VOLT<span class="logo-dot">.</span></span>
+            <button class="icon-btn close-drawer" aria-label="Fechar Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="drawer-body">
+            <a href="category.html?cat=tenis" class="drawer-link">Tênis <span>→</span></a>
+            <a href="category.html?cat=roupas" class="drawer-link">Roupas <span>→</span></a>
+            <a href="category.html?cat=acessorios" class="drawer-link">Acessórios <span>→</span></a>
+            <a href="category.html?cat=lancamentos" class="drawer-link">Lançamentos <span>⚡</span></a>
+            <div class="drawer-divider"></div>
+            <a href="#" class="drawer-link sub">Minha Conta</a>
+            <a href="#" class="drawer-link sub">Meus Pedidos</a>
+            <a href="#" class="drawer-link sub">Ajuda e Suporte</a>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                <input type="text" id="searchInput" placeholder="Buscar por tênis, jaquetas, acessórios..." autofocus>
+                <button class="close-search" id="closeSearch">✕</button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <p class="search-hint">Digite para buscar produtos instantaneamente...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Seu Carrinho (<span id="cartDrawerCount">0</span>)</h3>
+            <button class="icon-btn close-cart" aria-label="Fechar Carrinho">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItemsContainer">
+            <!-- Items injected by JS -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal</span>
+                <span id="cartSubtotalPrice">R$ 0,00</span>
+            </div>
+            <p class="cart-shipping-notice">Parabéns! Você tem direito a <strong>Frete Grátis</strong></p>
+            <button class="btn-primary full" id="checkoutBtn">FINALIZAR COMPRA</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg">
+                <img src="assets/ref-1000043846-1.jpg" alt="VOLT Hero" loading="eager">
+            </div>
+            <div class="hero-content">
+                <div class="tag-pill">LANÇAMENTO EXCLUSIVO</div>
+                <h1>VOLT DROPSET PRO</h1>
+                <p>Projetado para superar limites. Estabilidade, amortecimento reativo e design híbrido de alta performance.</p>
+                <div class="hero-actions">
+                    <a href="product.html?id=1" class="btn-primary">COMPRAR AGORA <span>→</span></a>
+                    <a href="category.html?cat=tenis" class="btn-outline">VER COLEÇÃO</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Celerators -->
+        <section class="section audience-section">
+            <div class="container">
+                <h2 class="section-title">PARA QUEM VOCÊ ESTÁ COMPRANDO?</h2>
+                <div class="audience-grid">
+                    <a href="category.html?cat=mulher" class="audience-card">
+                        <div class="audience-img">
+                            <img src="assets/ref-1000043847-2.jpg" alt="Mulher" loading="lazy">
+                        </div>
+                        <span>MULHER</span>
+                    </a>
+                    <a href="category.html?cat=homem" class="audience-card">
+                        <div class="audience-img">
+                            <img src="assets/ref-1000043848-3.jpg" alt="Homem" loading="lazy">
+                        </div>
+                        <span>HOMEM</span>
+                    </a>
+                    <a href="category.html?cat=infantil" class="audience-card">
+                        <div class="audience-img">
+                            <img src="assets/ref-1000043849-4.jpg" alt="Infantil" loading="lazy">
+                        </div>
+                        <span>INFANTIL</span>
+                    </a>
+                    <a href="category.html?cat=teams" class="audience-card">
+                        <div class="audience-img">
+                            <img src="assets/ref-1000043850-5.jpg" alt="Times e Seleções" loading="lazy">
+                        </div>
+                        <span>SELEÇÕES</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="section products-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">DESTAQUES DA SEMANA</h2>
+                    <a href="category.html?cat=tenis" class="link-arrow">Ver todos <span>→</span></a>
+                </div>
+                
+                <!-- Filter Chips -->
+                <div class="filter-chips">
+                    <button class="chip active" data-filter="all">Todos</button>
+                    <button class="chip" data-filter="tenis">Tênis</button>
+                    <button class="chip" data-filter="roupas">Roupas</button>
+                    <button class="chip" data-filter="acessorios">Acessórios</button>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="product-grid" id="homeProductGrid">
+                    <!-- Injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Promo Banner Parallax -->
+        <section class="promo-banner">
+            <div class="promo-content">
+                <span class="tag-volt">TECNOLOGIA DE PONTA</span>
+                <h2>FEITO PARA QUEBRAR RECORDES.</h2>
+                <p>Explore nossa linha de corrida com carbono e entressola Lightstrike Pro para máxima velocidade.</p>
+                <a href="product.html?id=2" class="btn-primary">EXPLORAR ADIZERO <span>→</span></a>
+            </div>
+        </section>
+
+        <!-- Teams & Clubs Carousel -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">ENCONTRE O SEU TIME</h2>
+                <div class="teams-grid">
+                    <div class="team-card">
+                        <div class="team-logo-box">🇩🇪</div>
+                        <h4>Alemanha</h4>
+                        <a href="category.html?cat=teams" class="link-arrow">Comprar camisa <span>→</span></a>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-logo-box">🇦🇷</div>
+                        <h4>Argentina</h4>
+                        <a href="category.html?cat=teams" class="link-arrow">Comprar camisa <span>→</span></a>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-logo-box">🇪🇸</div>
+                        <h4>Real Madrid</h4>
+                        <a href="category.html?cat=teams" class="link-arrow">Comprar camisa <span>→</span></a>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-logo-box">🇧🇷</div>
+                        <h4>Brasil</h4>
+                        <a href="category.html?cat=teams" class="link-arrow">Comprar camisa <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-box">
+                    <h3>JUNTE-SE AO CLUBE VOLT</h3>
+                    <p>Receba lançamentos exclusivos, acesso antecipado a drops e 15% de desconto na primeira compra.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Seu melhor e-mail" required>
+                        <button type="submit" class="btn-primary">CADASTRAR</button>
+                    </form>
+                    <span class="form-success" id="newsletterSuccess">✓ Cadastrado com sucesso! Verifique seu e-mail.</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo">VOLT<span class="logo-dot">.</span></a>
+                    <p class="footer-desc">Performance, estilo e inovação sem limites. Desenvolvido para atletas que moldam o futuro.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram">IG</a>
+                        <a href="#" aria-label="Twitter">X</a>
+                        <a href="#" aria-label="YouTube">YT</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>SUPORTE</h4>
+                    <a href="#">Atendimento ao Cliente</a>
+                    <a href="#">Meus Pedidos & Rastreio</a>
+                    <a href="#">Política de Trocas</a>
+                    <a href="#">Guia de Tamanhos</a>
+                </div>
+                <div class="footer-col">
+                    <h4>CATEGORIAS</h4>
+                    <a href="category.html?cat=tenis">Tênis de Corrida</a>
+                    <a href="category.html?cat=tenis">Treino & Academia</a>
+                    <a href="category.html?cat=roupas">Camisetas & Regatas</a>
+                    <a href="category.html?cat=acessorios">Mochilas & Bonés</a>
+                </div>
+                <div class="footer-col">
+                    <h4>EMPRESA</h4>
+                    <a href="#">Sobre a VOLT</a>
+                    <a href="#">Sustentabilidade</a>
+                    <a href="#">Carreiras</a>
+                    <a href="#">Imprensa</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 VOLT Sports Inc. Todos os direitos reservados.</p>
+                <div class="payment-methods">
+                    <span>PIX</span>
+                    <span>VISA</span>
+                    <span>MASTER</span>
+                    <span>BOLETO</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

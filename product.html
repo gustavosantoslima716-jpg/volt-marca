@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto | VOLT®</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-banner">
+        <p>⚡ Frete grátis em compras acima de R$ 299 | Ganhe 10% OFF no PIX</p>
+    </div>
+
+    <header class="header">
+        <div class="header-container">
+            <button class="icon-btn menu-toggle" aria-label="Abrir Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </button>
+            <a href="index.html" class="logo"><span>VOLT</span><span class="logo-dot">.</span></a>
+            <nav class="desktop-nav">
+                <a href="category.html?cat=tenis" class="nav-link">Tênis</a>
+                <a href="category.html?cat=roupas" class="nav-link">Roupas</a>
+                <a href="category.html?cat=acessorios" class="nav-link">Acessórios</a>
+                <a href="category.html?cat=lancamentos" class="nav-link highlight">Lançamentos</a>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn search-toggle" aria-label="Buscar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+                <button class="icon-btn wishlist-toggle" aria-label="Favoritos"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="badge" id="wishlist-count">0</span></button>
+                <button class="icon-btn cart-toggle" aria-label="Carrinho"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="badge" id="cart-count">0</span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer & Modals (Shared) -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <span class="logo">VOLT<span class="logo-dot">.</span></span>
+            <button class="icon-btn close-drawer">✕</button>
+        </div>
+        <div class="drawer-body">
+            <a href="category.html?cat=tenis" class="drawer-link">Tênis <span>→</span></a>
+            <a href="category.html?cat=roupas" class="drawer-link">Roupas <span>→</span></a>
+            <a href="category.html?cat=acessorios" class="drawer-link">Acessórios <span>→</span></a>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <div class="search-modal" id="searchModal">
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <input type="text" id="searchInput" placeholder="Buscar produtos...">
+                <button class="close-search" id="closeSearch">✕</button>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Seu Carrinho (<span id="cartDrawerCount">0</span>)</h3>
+            <button class="icon-btn close-cart">✕</button>
+        </div>
+        <div class="cart-items" id="cartItemsContainer"></div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal</span>
+                <span id="cartSubtotalPrice">R$ 0,00</span>
+            </div>
+            <button class="btn-primary full" id="checkoutBtn">FINALIZAR COMPRA</button>
+        </div>
+    </div>
+
+    <!-- Product Detail Main -->
+    <main class="product-detail-main">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / <a href="category.html" id="prodCategoryLink">Categoria</a> / <span id="prodNameBread">Produto</span>
+            </div>
+
+            <div class="product-detail-grid">
+                <!-- Gallery -->
+                <div class="product-gallery">
+                    <div class="main-image-box">
+                        <img id="mainProductImg" src="" alt="Produto">
+                    </div>
+                    <div class="thumbnail-list" id="thumbnailList">
+                        <!-- Thumbnails injected -->
+                    </div>
+                </div>
+
+                <!-- Info & Purchase -->
+                <div class="product-info-panel">
+                    <span class="tag-volt" id="prodBadge">NOVIDADE</span>
+                    <h1 id="prodTitle">Carregando...</h1>
+                    <p class="prod-subtitle" id="prodSub">Performance e Conforto</p>
+                    
+                    <div class="prod-price-box">
+                        <span class="current-price" id="prodPrice">R$ 0,00</span>
+                        <span class="installments" id="prodInstallments">em até 10x sem juros</span>
+                    </div>
+
+                    <div class="selector-section">
+                        <label>Selecione o Tamanho:</label>
+                        <div class="size-selector" id="sizeSelector">
+                            <!-- Sizes injected -->
+                        </div>
+                    </div>
+
+                    <div class="action-buttons-group">
+                        <button class="btn-primary full" id="addToCartBtn">ADICIONAR AO CARRINHO</button>
+                        <button class="btn-outline" id="wishlistBtnProd" title="Favoritar">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </button>
+                    </div>
+
+                    <div class="product-features-list">
+                        <div class="feat-item">🚚 <strong>Frete Grátis</strong> em pedidos acima de R$ 299</div>
+                        <div class="feat-item">🔄 <strong>Troca Fácil</strong> em até 30 dias grátis</div>
+                        <div class="feat-item">🛡️ <strong>Garantia Oficial</strong> VOLT contra defeitos de fabricação</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Description tabs -->
+            <div class="product-description-section">
+                <h3>DETALHES DO PRODUTO</h3>
+                <p id="prodFullDesc">Desenvolvido com tecnologia de ponta para atender atletas de alto rendimento. Materiais leves, respiráveis e com máxima durabilidade para acompanhar seu ritmo em qualquer desafio.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 VOLT Sports Inc. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
